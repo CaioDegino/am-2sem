@@ -12,19 +12,18 @@ import java.util.List;
  */
 @Entity
 @Table(name="ITEM_EFFECT")
+@SequenceGenerator(name="ITEM_EFFECT_CODITEEFF_GENERATOR", sequenceName="SEQ_ITEM_EFFECT")
 public class ItemEffect implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ITEM_EFFECT_CODITEEFF_GENERATOR", sequenceName="SEQ_ITEM_EFFECT")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ITEM_EFFECT_CODITEEFF_GENERATOR")
 	@Column(name="COD_ITE_EFF")
-	private long codIteEff;
+	private long id;
 
 	@Column(name="ITE_EFF_VALUE")
-	private BigDecimal iteEffValue;
+	private Long value;
 
-	//bi-directional many-to-one association to AttributeType
 	@ManyToOne
 	@JoinColumn(name="ATTRIBUTE_TYPE_COD_ATT_TYP")
 	private AttributeType attributeType;

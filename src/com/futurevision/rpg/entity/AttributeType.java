@@ -2,6 +2,7 @@ package com.futurevision.rpg.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,11 +12,11 @@ import java.util.List;
  */
 @Entity
 @Table(name="ATTRIBUTE_TYPE")
+@SequenceGenerator(name="ATTRIBUTE_TYPE_ID_GENERATOR", sequenceName="SEQ_ATTRIBUTE_TYPE")
 public class AttributeType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ATTRIBUTE_TYPE_ID_GENERATOR", sequenceName="SEQ_ATTRIBUTE_TYPE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ATTRIBUTE_TYPE_ID_GENERATOR")
 	@Column(name="COD_ATT_TYP")
 	private long id;
@@ -32,11 +33,6 @@ public class AttributeType implements Serializable {
 
 	private String nome;
 
-	//bi-directional many-to-one association to Attribute
-	@OneToMany(mappedBy="attributeType")
-	private List<Attribute> attributes;
-
-	//bi-directional many-to-one association to ItemEffect
 	@OneToMany(mappedBy="attributeType")
 	private List<ItemEffect> itemEffects;
 

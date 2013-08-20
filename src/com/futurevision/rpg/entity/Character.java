@@ -11,11 +11,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "GAME_CHARACTER")
+@SequenceGenerator(name = "GAME_CHARACTER_ID_GENERATOR", sequenceName = "SEQ_GAME_CHARACTER")
 public class Character implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "GAME_CHARACTER_ID_GENERATOR", sequenceName = "SEQ_GAME_CHARACTER")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GAME_CHARACTER_ID_GENERATOR")
 	@Column(name = "COD_CHA")
 	private long id;
