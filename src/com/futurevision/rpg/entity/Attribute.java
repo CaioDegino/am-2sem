@@ -23,7 +23,7 @@ public class Attribute implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ATTRIBUTE_ID_GENERATOR")
 	@Column(name = "COD_ATT")
-	private long id;
+	private Long id;
 
 	@Column(name = "ATT_VALUE")
 	private Long value;
@@ -53,16 +53,16 @@ public class Attribute implements Serializable {
 		this.total = total;
 	}
 
-	public long getId() {
-		return this.id;
-	}
-
 	public AttributeType getAttributeType() {
-		return this.attributeType;
+		return attributeType;
 	}
 
 	public void setAttributeType(AttributeType attributeType) {
 		this.attributeType = attributeType;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

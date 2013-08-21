@@ -1,88 +1,86 @@
 package com.futurevision.rpg.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 /**
  * The persistent class for the CAMPAIGN database table.
  * 
  */
 @Entity
+@SequenceGenerator(name = "CAMPAIGN_ID_GENERATOR", sequenceName = "SEQ_CAMPAIGN")
 public class Campaign implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CAMPAIGN_ID_GENERATOR", sequenceName="SEQ_CAMPAIGN")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CAMPAIGN_ID_GENERATOR")
-	@Column(name="COD_CAM")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CAMPAIGN_ID_GENERATOR")
+	@Column(name = "COD_CAM")
+	private Long id;
 
 	@Lob
-	@Column(name="AUDIO_DESCRIPTION")
-	private byte[] audioDescription;
+	@Column(name = "AUDIO_DESCRIPTION")
+	private Byte[] audioDescription;
 
 	@Lob
-	@Column(name="AUDIO_TITLE")
-	private byte[] audioTitle;
+	@Column(name = "AUDIO_TITLE")
+	private Byte[] audioTitle;
 
 	private String description;
 
 	@Lob
-	private byte[] img;
+	private Byte[] img;
 
 	private String title;
 
-	//bi-directional many-to-one association to Scenario
-	@OneToMany(mappedBy="campaign")
+	@OneToMany(mappedBy = "campaign")
 	private List<Scenario> scenarios;
 
 	public Campaign() {
 	}
 
-	public long getId() {
-		return this.id;
+	public Byte[] getAudioDescription() {
+		return audioDescription;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public byte[] getAudioDescription() {
-		return this.audioDescription;
-	}
-
-	public void setAudioDescription(byte[] audioDescription) {
+	public void setAudioDescription(Byte[] audioDescription) {
 		this.audioDescription = audioDescription;
 	}
 
-	public byte[] getAudioTitle() {
-		return this.audioTitle;
+	public Byte[] getAudioTitle() {
+		return audioTitle;
 	}
 
-	public void setAudioTitle(byte[] audioTitle) {
+	public void setAudioTitle(Byte[] audioTitle) {
 		this.audioTitle = audioTitle;
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public byte[] getImg() {
-		return this.img;
+	public Byte[] getImg() {
+		return img;
 	}
 
-	public void setImg(byte[] img) {
+	public void setImg(Byte[] img) {
 		this.img = img;
 	}
 
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
 	public void setTitle(String title) {
@@ -90,11 +88,15 @@ public class Campaign implements Serializable {
 	}
 
 	public List<Scenario> getScenarios() {
-		return this.scenarios;
+		return scenarios;
 	}
 
 	public void setScenarios(List<Scenario> scenarios) {
 		this.scenarios = scenarios;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

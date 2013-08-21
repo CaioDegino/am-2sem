@@ -18,14 +18,14 @@ public class Character implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GAME_CHARACTER_ID_GENERATOR")
 	@Column(name = "COD_CHA")
-	private long id;
+	private Long id;
 
 	@Lob
 	@Column(name = "AUDIO_NAME")
-	private byte[] audioName;
+	private Byte[] audioName;
 
 	@Lob
-	private byte[] img;
+	private Byte[] img;
 
 	private String name;
 
@@ -46,8 +46,28 @@ public class Character implements Serializable {
 	public Character() {
 	}
 
-	public long getId() {
-		return this.id;
+	public Byte[] getAudioName() {
+		return audioName;
+	}
+
+	public void setAudioName(Byte[] audioName) {
+		this.audioName = audioName;
+	}
+
+	public Byte[] getImg() {
+		return img;
+	}
+
+	public void setImg(Byte[] img) {
+		this.img = img;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getXp() {
@@ -58,32 +78,8 @@ public class Character implements Serializable {
 		this.xp = xp;
 	}
 
-	public byte[] getAudioName() {
-		return this.audioName;
-	}
-
-	public void setAudioName(byte[] audioName) {
-		this.audioName = audioName;
-	}
-
-	public byte[] getImg() {
-		return this.img;
-	}
-
-	public void setImg(byte[] img) {
-		this.img = img;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public List<Attribute> getAttributes() {
-		return this.attributes;
+		return attributes;
 	}
 
 	public void setAttributes(List<Attribute> attributes) {
@@ -91,7 +87,7 @@ public class Character implements Serializable {
 	}
 
 	public GameUser getGameUser() {
-		return this.gameUser;
+		return gameUser;
 	}
 
 	public void setGameUser(GameUser gameUser) {
@@ -99,11 +95,15 @@ public class Character implements Serializable {
 	}
 
 	public List<ChaIte> getChaItes() {
-		return this.chaItes;
+		return chaItes;
 	}
 
 	public void setChaItes(List<ChaIte> chaItes) {
 		this.chaItes = chaItes;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

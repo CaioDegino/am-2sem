@@ -43,16 +43,16 @@ public class SceIte implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
 	public Item getItem() {
-		return this.item;
+		return item;
 	}
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

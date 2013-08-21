@@ -4,131 +4,101 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the ITEM database table.
  * 
  */
 @Entity
+@SequenceGenerator(name = "ITEM_ID_GENERATOR", sequenceName = "SEQ_ITEM")
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ITEM_ID_GENERATOR", sequenceName="SEQ_ITEM")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ITEM_ID_GENERATOR")
-	@Column(name="COD_ITEM")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_ID_GENERATOR")
+	@Column(name = "COD_ITEM")
+	private Long id;
 
 	@Lob
-	@Column(name="AUDIO_DESCRIPTION")
-	private byte[] audioDescription;
+	@Column(name = "AUDIO_DESCRIPTION")
+	private Byte[] audioDescription;
 
 	@Lob
-	@Column(name="AUDIO_NAME")
-	private byte[] audioName;
+	@Column(name = "AUDIO_NAME")
+	private Byte[] audioName;
 
 	private String description;
 
-	private String handle;
+	private Boolean handle;
 
 	@Lob
-	private byte[] img;
+	private Byte[] img;
 
 	private String name;
 
-	//bi-directional many-to-one association to ChaIte
-	@OneToMany(mappedBy="item")
-	private List<ChaIte> chaItes;
-
-	//bi-directional many-to-many association to ItemEffect
-	@ManyToMany(mappedBy="items")
+	@ManyToMany(mappedBy = "items")
 	private List<ItemEffect> itemEffects;
-
-	//bi-directional many-to-many association to Scenario
-	@ManyToMany(mappedBy="items")
-	private List<Scenario> scenarios;
 
 	public Item() {
 	}
 
-	public long getId() {
-		return this.id;
+	public Byte[] getAudioDescription() {
+		return audioDescription;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public byte[] getAudioDescription() {
-		return this.audioDescription;
-	}
-
-	public void setAudioDescription(byte[] audioDescription) {
+	public void setAudioDescription(Byte[] audioDescription) {
 		this.audioDescription = audioDescription;
 	}
 
-	public byte[] getAudioName() {
-		return this.audioName;
+	public Byte[] getAudioName() {
+		return audioName;
 	}
 
-	public void setAudioName(byte[] audioName) {
+	public void setAudioName(Byte[] audioName) {
 		this.audioName = audioName;
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getHandle() {
-		return this.handle;
+	public Boolean getHandle() {
+		return handle;
 	}
 
-	public void setHandle(String handle) {
+	public void setHandle(Boolean handle) {
 		this.handle = handle;
 	}
 
-	public byte[] getImg() {
-		return this.img;
+	public Byte[] getImg() {
+		return img;
 	}
 
-	public void setImg(byte[] img) {
+	public void setImg(Byte[] img) {
 		this.img = img;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public List<ChaIte> getChaItes() {
-		return this.chaItes;
-	}
-
-	public void setChaItes(List<ChaIte> chaItes) {
-		this.chaItes = chaItes;
-	}
-
 	public List<ItemEffect> getItemEffects() {
-		return this.itemEffects;
+		return itemEffects;
 	}
 
 	public void setItemEffects(List<ItemEffect> itemEffects) {
 		this.itemEffects = itemEffects;
 	}
 
-	public List<Scenario> getScenarios() {
-		return this.scenarios;
-	}
-
-	public void setScenarios(List<Scenario> scenarios) {
-		this.scenarios = scenarios;
+	public Long getId() {
+		return id;
 	}
 
 }

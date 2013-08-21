@@ -17,25 +17,25 @@ public class Scenario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SCENARIO_CODSCE_GENERATOR")
 	@Column(name = "COD_SCE")
-	private long codSce;
+	private Long id;
 
 	@Column(name = "ALLOW_PROVISION")
 	private Boolean allowProvision;
-
-	@Lob
-	@Column(name = "AUDIO_AMBIENCE")
-	private byte[] audioAmbience;
-
-	@Lob
-	@Column(name = "AUDIO_DESCRIPTION")
-	private byte[] audioDescription;
-
-	private String description;
 
 	private Boolean flee;
 
 	@Column(name = "LUCK_TEST")
 	private Boolean luckTest;
+
+	@Lob
+	@Column(name = "AUDIO_AMBIENCE")
+	private Byte[] audioAmbience;
+
+	@Lob
+	@Column(name = "AUDIO_DESCRIPTION")
+	private Byte[] audioDescription;
+
+	private String description;
 
 	@ManyToOne
 	@JoinColumn(name = "COD_CAM")
@@ -44,40 +44,34 @@ public class Scenario implements Serializable {
 	@OneToMany
 	private List<ScenarioSelection> scenarioSelections;
 
-	@OneToMany
+	@JoinColumn(name = "COD_SCE_ITE")
 	private List<SceCha> sceChas;
 
 	@OneToMany
 	@JoinColumn(name = "COD_SCE_ITE")
 	private List<SceIte> sceItes;
 
-
 	public Scenario() {
 	}
 
-	public long getCodSce() {
-		return this.codSce;
+	public Byte[] getAudioAmbience() {
+		return audioAmbience;
 	}
 
-	public void setCodSce(long codSce) {
-		this.codSce = codSce;
-	}
-
-
-	public byte[] getAudioAmbience() {
-		return this.audioAmbience;
-	}
-
-	public void setAudioAmbience(byte[] audioAmbience) {
+	public void setAudioAmbience(Byte[] audioAmbience) {
 		this.audioAmbience = audioAmbience;
 	}
 
-	public byte[] getAudioDescription() {
-		return this.audioDescription;
+	public Byte[] getAudioDescription() {
+		return audioDescription;
 	}
 
-	public void setAudioDescription(byte[] audioDescription) {
+	public void setAudioDescription(Byte[] audioDescription) {
 		this.audioDescription = audioDescription;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getDescription() {
@@ -120,15 +114,6 @@ public class Scenario implements Serializable {
 		this.campaign = campaign;
 	}
 
-	public List<ScenarioSelection> getScenarioSelections1() {
-		return this.scenarioSelections1;
-	}
-
-	public void setScenarioSelections1(
-			List<ScenarioSelection> scenarioSelections1) {
-		this.scenarioSelections1 = scenarioSelections1;
-	}
-
 	public List<SceCha> getSceChas() {
 		return this.sceChas;
 	}
@@ -137,21 +122,20 @@ public class Scenario implements Serializable {
 		this.sceChas = sceChas;
 	}
 
-	public List<Item> getItems() {
-		return this.items;
+	public List<ScenarioSelection> getScenarioSelections() {
+		return scenarioSelections;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setScenarioSelections(List<ScenarioSelection> scenarioSelections) {
+		this.scenarioSelections = scenarioSelections;
 	}
 
-	public List<ScenarioSelection> getScenarioSelections2() {
-		return this.scenarioSelections2;
+	public List<SceIte> getSceItes() {
+		return sceItes;
 	}
 
-	public void setScenarioSelections2(
-			List<ScenarioSelection> scenarioSelections2) {
-		this.scenarioSelections2 = scenarioSelections2;
+	public void setSceItes(List<SceIte> sceItes) {
+		this.sceItes = sceItes;
 	}
 
 }

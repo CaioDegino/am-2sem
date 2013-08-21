@@ -4,25 +4,24 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the GAME_USER database table.
  * 
  */
 @Entity
-@Table(name="GAME_USER")
+@Table(name = "GAME_USER")
+@SequenceGenerator(name = "GAME_USER_ID_GENERATOR", sequenceName = "SEQ_GAME_USER")
 public class GameUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="GAME_USER_ID_GENERATOR", sequenceName="SEQ_GAME_USER")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="GAME_USER_ID_GENERATOR")
-	@Column(name="COD_GAM_USE")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GAME_USER_ID_GENERATOR")
+	@Column(name = "COD_GAM_USE")
+	private Long id;
 
 	@Lob
-	@Column(name="AUDIO_USERNAME")
-	private byte[] audioUsername;
+	@Column(name = "AUDIO_USERNAME")
+	private Byte[] audioUsername;
 
 	private String email;
 
@@ -32,27 +31,22 @@ public class GameUser implements Serializable {
 
 	private String username;
 
-	//bi-directional many-to-one association to Character
-	@OneToMany(mappedBy="gameUser")
+	@OneToMany(mappedBy = "gameUser")
 	private List<Character> characters;
 
 	public GameUser() {
 	}
 
-	public long getId() {
-		return this.id;
+	public Byte[] getAudioUsername() {
+		return audioUsername;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public byte[] getAudioUsername() {
-		return this.audioUsername;
-	}
-
-	public void setAudioUsername(byte[] audioUsername) {
+	public void setAudioUsername(Byte[] audioUsername) {
 		this.audioUsername = audioUsername;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getEmail() {

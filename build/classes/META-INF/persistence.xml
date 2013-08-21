@@ -12,6 +12,5 @@
 		<class>com.futurevision.rpg.entity.ItemEffect</class>
 		<class>com.futurevision.rpg.entity.Scenario</class>
 		<class>com.futurevision.rpg.entity.ScenarioSelection</class>
-		<class>com.futurevision.rpg.entity.SceCha</class>
 	</persistence-unit>
 </persistence>
